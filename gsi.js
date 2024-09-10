@@ -1,7 +1,7 @@
 import {setCookieWithExpireHour,getCookie} from "https://cdn.jsdelivr.net/gh/jscroot/lib@0.0.4/cookie.js";
 import {postJSON} from "https://cdn.jsdelivr.net/gh/jscroot/lib@0.0.4/api.js";
 import {redirect} from "https://cdn.jsdelivr.net/gh/jscroot/lib@0.0.4/url.js";
-import {addCSS,addScriptInHead,setValue,getValue} from "https://cdn.jsdelivr.net/gh/jscroot/element@0.1.5/croot.js";
+import {addCSS,addScriptInHead} from "https://cdn.jsdelivr.net/gh/jscroot/element@0.1.5/croot.js";
 import Swal from 'https://cdn.jsdelivr.net/npm/sweetalert2@11/src/sweetalert2.js';
 
 window.handleCredentialResponse = gSignIn;
@@ -55,6 +55,7 @@ function responsePostFunction(response) {
     if (response.status === 200 && response.data) {
         console.log(response.data);
         setCookieWithExpireHour('login',response.data.token,18);
+        redirect("/dashboard");
     } else {
         console.error("Login failed:", response.data?.message || "Unknown error");
         Swal.fire({
