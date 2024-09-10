@@ -61,7 +61,7 @@ function responsePostFunction(response) {
         Swal.fire({
             icon: "error",
             title: "Login Failed",
-            text: response.data?.message || "An unknown error occurred.",
+            text: response.data?.message || "Anda belum terdaftar dengan login google, silahkan tap atau scan qr dahulu untuk pendaftaran.",
         }).then(() => {
             redirect("/login");
         });
