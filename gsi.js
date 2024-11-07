@@ -10,12 +10,14 @@ await addCSS("https://cdn.jsdelivr.net/npm/sweetalert2@11/dist/sweetalert2.css")
 
 const target_url="https://asia-southeast2-awangga.cloudfunctions.net/bukupedia/auth/users";
 
+const client_id="239713755402-4hr2cva377m43rsqs2dk0c7f7cktfeph.apps.googleusercontent.com";
+
 // Panggil fungsi untuk menambahkan elemen
 appendGoogleSignin();
 
 
 // Buat fungsi untuk memanggil gsi js dan menambahkan elemen div ke dalam DOM
-async function appendGoogleSignin() {
+async function appendGoogleSignin(client_id) {
     //import script google sign in
     await addScriptInHead("https://accounts.google.com/gsi/client");
     // Buat elemen div
@@ -23,7 +25,7 @@ async function appendGoogleSignin() {
     
     // Set atribut-atribut yang diperlukan
     div.id = "g_id_onload";
-    div.setAttribute("data-client_id", "239713755402-4hr2cva377m43rsqs2dk0c7f7cktfeph.apps.googleusercontent.com");
+    div.setAttribute("data-client_id", client_id);
     div.setAttribute("data-context", "signin");
     div.setAttribute("data-ux_mode", "popup");
     div.setAttribute("data-callback", "handleCredentialResponse");
