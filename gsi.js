@@ -13,7 +13,7 @@ const target_url="https://asia-southeast2-awangga.cloudfunctions.net/bukupedia/a
 const client_id="239713755402-4hr2cva377m43rsqs2dk0c7f7cktfeph.apps.googleusercontent.com";
 
 // Panggil fungsi untuk menambahkan elemen
-appendGoogleSignin();
+appendGoogleSignin(client_id);
 
 
 // Buat fungsi untuk memanggil gsi js dan menambahkan elemen div ke dalam DOM
