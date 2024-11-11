@@ -7,7 +7,7 @@ import Swal from 'https://cdn.jsdelivr.net/npm/sweetalert2@11/src/sweetalert2.js
 
 window.handleCredentialResponse = gSignIn;
 //import script google sign in
-await addJSInHead("https://accounts.google.com/gsi/client");
+await addScriptInHead("https://accounts.google.com/gsi/client");
 await addCSSInHead("https://cdn.jsdelivr.net/npm/sweetalert2@11/dist/sweetalert2.css");
 
 const target_url="https://asia-southeast2-awangga.cloudfunctions.net/bukupedia/auth/users";
