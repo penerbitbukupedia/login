@@ -6,7 +6,8 @@ import {addCSSInHead,addJSInHead} from "https://cdn.jsdelivr.net/gh/jscroot/lib@
 import Swal from 'https://cdn.jsdelivr.net/npm/sweetalert2@11/src/sweetalert2.js';
 
 window.handleCredentialResponse = gSignIn;
-
+//import script google sign in
+await addJSInHead("https://accounts.google.com/gsi/client");
 await addCSSInHead("https://cdn.jsdelivr.net/npm/sweetalert2@11/dist/sweetalert2.css");
 
 const target_url="https://asia-southeast2-awangga.cloudfunctions.net/bukupedia/auth/users";
@@ -19,8 +20,7 @@ appendGoogleSignin(client_id);
 
 // Buat fungsi untuk memanggil gsi js dan menambahkan elemen div ke dalam DOM
 async function appendGoogleSignin(client_id) {
-    //import script google sign in
-    await addJSInHead("https://accounts.google.com/gsi/client");
+    
     // Buat elemen div
     const div = document.createElement("div");
     
