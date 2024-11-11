@@ -2,7 +2,7 @@ import {setCookieWithExpireHour,getCookie} from "https://cdn.jsdelivr.net/gh/jsc
 import {postJSON} from "https://cdn.jsdelivr.net/gh/jscroot/lib@0.0.4/api.js";
 import {redirect} from "https://cdn.jsdelivr.net/gh/jscroot/lib@0.0.4/url.js";
 import {addCSS,addScriptInHead} from "https://cdn.jsdelivr.net/gh/jscroot/element@0.1.5/croot.js";
-import {addCSSInHead} from "https://cdn.jsdelivr.net/gh/jscroot/lib@0.1.5/element.js";
+import {addCSSInHead,addJSInHead} from "https://cdn.jsdelivr.net/gh/jscroot/lib@0.1.5/element.js";
 import Swal from 'https://cdn.jsdelivr.net/npm/sweetalert2@11/src/sweetalert2.js';
 
 window.handleCredentialResponse = gSignIn;
@@ -20,7 +20,7 @@ appendGoogleSignin(client_id);
 // Buat fungsi untuk memanggil gsi js dan menambahkan elemen div ke dalam DOM
 async function appendGoogleSignin(client_id) {
     //import script google sign in
-    await addScriptInHead("https://accounts.google.com/gsi/client");
+    await addJSInHead("https://accounts.google.com/gsi/client");
     // Buat elemen div
     const div = document.createElement("div");
     
