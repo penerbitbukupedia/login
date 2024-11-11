@@ -2,11 +2,12 @@ import {setCookieWithExpireHour,getCookie} from "https://cdn.jsdelivr.net/gh/jsc
 import {postJSON} from "https://cdn.jsdelivr.net/gh/jscroot/lib@0.0.4/api.js";
 import {redirect} from "https://cdn.jsdelivr.net/gh/jscroot/lib@0.0.4/url.js";
 import {addCSS,addScriptInHead} from "https://cdn.jsdelivr.net/gh/jscroot/element@0.1.5/croot.js";
+import {addCSSInHead} from "https://cdn.jsdelivr.net/gh/jscroot/lib@0.1.5/element.js";
 import Swal from 'https://cdn.jsdelivr.net/npm/sweetalert2@11/src/sweetalert2.js';
 
 window.handleCredentialResponse = gSignIn;
 
-await addCSS("https://cdn.jsdelivr.net/npm/sweetalert2@11/dist/sweetalert2.css");
+await addCSSInHead("https://cdn.jsdelivr.net/npm/sweetalert2@11/dist/sweetalert2.css");
 
 const target_url="https://asia-southeast2-awangga.cloudfunctions.net/bukupedia/auth/users";
 
