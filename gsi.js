@@ -42,7 +42,7 @@ async function appendGoogleSignin(client_id) {
 }
 
 // Fungsi handleCredentialResponse sebagai callback (harus ada untuk Google Sign-In)
-function handleCredentialResponse(response) {
+async function handleCredentialResponse(response) {
     console.log('Credential response:', response);
     try {
         const gtoken = { token: response.credential };
