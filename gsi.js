@@ -21,7 +21,7 @@ appendGoogleSignin(client_id);
 async function appendGoogleSignin(client_id) {
     try {
         // Memuat script Google Sign-In
-        await addScriptInHead("https://accounts.google.com/gsi/client");
+        await addJSInHead("https://accounts.google.com/gsi/client");
         
         // Membuat elemen <div> untuk Google Sign-In
         const div = document.createElement("div");
