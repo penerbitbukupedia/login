@@ -23,7 +23,7 @@ async function appendGoogleSignin(client_id, target_url) {
         // Menginisialisasi Google Sign-In dan menetapkan gSignIn sebagai callback
         google.accounts.id.initialize({
             client_id: client_id,
-            callback: gSignIn(response, target_url), // Menggunakan gSignIn sebagai callback untuk Google Sign-In
+            callback:  (response) => gSignIn(response, target_url), // Menggunakan gSignIn sebagai callback untuk Google Sign-In
         });
         // Memunculkan pop-up Google Sign-In
         google.accounts.id.prompt();
