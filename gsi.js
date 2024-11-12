@@ -4,27 +4,26 @@ import {redirect} from "https://cdn.jsdelivr.net/gh/jscroot/lib@0.0.4/url.js";
 import {addCSSInHead,addJSInHead} from "https://cdn.jsdelivr.net/gh/jscroot/lib@0.1.6/element.js";
 import Swal from 'https://cdn.jsdelivr.net/npm/sweetalert2@11/src/sweetalert2.js';
 
-//window.handleCredentialResponse = gSignIn;
 
 await addCSSInHead("https://cdn.jsdelivr.net/npm/sweetalert2@11/dist/sweetalert2.css");
 
-const target_url="https://asia-southeast2-awangga.cloudfunctions.net/bukupedia/auth/users";
+const url="https://asia-southeast2-awangga.cloudfunctions.net/bukupedia/auth/users";
 
 const client_id="239713755402-4hr2cva377m43rsqs2dk0c7f7cktfeph.apps.googleusercontent.com";
 
 // Panggil fungsi untuk menambahkan elemen
-appendGoogleSignin(client_id);
+appendGoogleSignin(client_id,url);
 
 
 // Buat fungsi untuk memanggil gsi js dan menambahkan elemen div ke dalam DOM
-async function appendGoogleSignin(client_id) {
+async function appendGoogleSignin(client_id, target_url) {
     try {
         // Memuat script Google Sign-In
         await addJSInHead("https://accounts.google.com/gsi/client");
         // Menginisialisasi Google Sign-In dan menetapkan gSignIn sebagai callback
         google.accounts.id.initialize({
             client_id: client_id,
-            callback: gSignIn, // Menggunakan gSignIn sebagai callback untuk Google Sign-In
+            callback: gSignIn(response, target_url), // Menggunakan gSignIn sebagai callback untuk Google Sign-In
         });
         // Memunculkan pop-up Google Sign-In
         google.accounts.id.prompt();
@@ -34,7 +33,7 @@ async function appendGoogleSignin(client_id) {
     }
 }
 
-async function gSignIn(response) {
+async function gSignIn(response, target_url) {
     try {
         const gtoken = { token: response.credential };
         await postJSON(target_url, "login", getCookie("login"), gtoken, responsePostFunction);
