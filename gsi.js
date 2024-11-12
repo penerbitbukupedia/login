@@ -1,7 +1,6 @@
 import {setCookieWithExpireHour,getCookie} from "https://cdn.jsdelivr.net/gh/jscroot/lib@0.0.4/cookie.js";
 import {postJSON} from "https://cdn.jsdelivr.net/gh/jscroot/lib@0.0.4/api.js";
 import {redirect} from "https://cdn.jsdelivr.net/gh/jscroot/lib@0.0.4/url.js";
-import {addCSS,addScriptInHead} from "https://cdn.jsdelivr.net/gh/jscroot/element@0.1.5/croot.js";
 import {addCSSInHead,addJSInHead} from "https://cdn.jsdelivr.net/gh/jscroot/lib@0.1.6/element.js";
 import Swal from 'https://cdn.jsdelivr.net/npm/sweetalert2@11/src/sweetalert2.js';
 
@@ -22,18 +21,6 @@ async function appendGoogleSignin(client_id) {
     try {
         // Memuat script Google Sign-In
         await addJSInHead("https://accounts.google.com/gsi/client");
-        
-        // Membuat elemen <div> untuk Google Sign-In
-        const div = document.createElement("div");
-        div.id = "g_id_onload";
-        div.setAttribute("data-client_id", client_id);
-        div.setAttribute("data-context", "signin");
-        div.setAttribute("data-ux_mode", "popup");
-        //div.setAttribute("data-callback", "handleCredentialResponse");
-        div.setAttribute("data-auto_select", "true");
-        div.setAttribute("data-itp_support", "true");
-        // Menambahkan elemen <div> ke dalam body
-        document.body.appendChild(div);
         // Menginisialisasi Google Sign-In dan menetapkan gSignIn sebagai callback
         google.accounts.id.initialize({
             client_id: client_id,
@@ -41,29 +28,11 @@ async function appendGoogleSignin(client_id) {
         });
         // Memunculkan pop-up Google Sign-In
         google.accounts.id.prompt();
-        console.log('Google Sign-In div appended successfully!');
+        console.log('Google Sign-In open successfully!');
     } catch (error) {
         console.error('Failed to load Google Sign-In script:', error);
     }
 }
-
-// Fungsi handleCredentialResponse sebagai callback (harus ada untuk Google Sign-In)
-async function handleCredentialResponse(response) {
-    console.log('Credential response:', response);
-    try {
-        const gtoken = { token: response.credential };
-        await postJSON(target_url, "login", getCookie("login"), gtoken, responsePostFunction);
-    } catch (error) {
-        console.error("Network or JSON parsing error:", error);
-        Swal.fire({
-            icon: "error",
-            title: "Network Error",
-            text: "An error occurred while trying to log in. Please try again.",
-        });
-    }
-}
-
-  
 
 async function gSignIn(response) {
     try {
@@ -78,8 +47,6 @@ async function gSignIn(response) {
         });
     }
 }
-
-
 
 function responsePostFunction(response) {
     if (response.status === 200 && response.data) {
