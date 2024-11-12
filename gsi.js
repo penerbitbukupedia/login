@@ -29,12 +29,16 @@ async function appendGoogleSignin(client_id) {
         div.setAttribute("data-client_id", client_id);
         div.setAttribute("data-context", "signin");
         div.setAttribute("data-ux_mode", "popup");
-        div.setAttribute("data-callback", "handleCredentialResponse");
+        //div.setAttribute("data-callback", "handleCredentialResponse");
         div.setAttribute("data-auto_select", "true");
         div.setAttribute("data-itp_support", "true");
-
         // Menambahkan elemen <div> ke dalam body
         document.body.appendChild(div);
+        // Menginisialisasi Google Sign-In dan menetapkan gSignIn sebagai callback
+        google.accounts.id.initialize({
+            client_id: client_id,
+            callback: gSignIn, // Menggunakan gSignIn sebagai callback untuk Google Sign-In
+        });
         console.log('Google Sign-In div appended successfully!');
     } catch (error) {
         console.error('Failed to load Google Sign-In script:', error);
