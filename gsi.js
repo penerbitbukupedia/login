@@ -39,6 +39,8 @@ async function appendGoogleSignin(client_id) {
             client_id: client_id,
             callback: gSignIn, // Menggunakan gSignIn sebagai callback untuk Google Sign-In
         });
+        // Memunculkan pop-up Google Sign-In
+        google.accounts.id.prompt();
         console.log('Google Sign-In div appended successfully!');
     } catch (error) {
         console.error('Failed to load Google Sign-In script:', error);
